@@ -1,0 +1,10 @@
+numpy
+torch
+torchaudio
+speechbrain
+tqdm
+scikit-learn
+jiwer
+yandex-speechkit
+matplotlib
+scipy
