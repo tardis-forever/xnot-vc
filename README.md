@@ -18,8 +18,21 @@ Figure: XNOT setup. By computing incomplete transport (IT) maps in high dimensio
 ## Quickstart
 
 1. Clone [this](https://github.com/tardis-forever/xnot-vc) repo
-2. **Install dependancies** from `requirements.txt`. It is advised that you have python version 3.10 or greater, and torch version v2.0 or greater.
+2. **Install dependencies** from `requirements.txt`. It is advised that you have python version 3.10 or greater, and torch version v2.0 or greater.
 3. Run reproducible experiments from [xnot_demo](./xnot_demo.ipynb) 
+
+
+## Repository structure
+
+Additions to original repo:
+- ```xnot.py``` - implementation of XNOT module for general domain translation task
+- ```xnot_matcher.py``` - modification of `KNeighborsVC` with `XNOT` mapping support
+- ```xnot_demo.ipynb``` - replication notebook with experiments
+
+## Datasets
+- [LibriSpeech (test-clean)](http://www.openslr.org/12) should be placed in the root of repository;
+- [LibriSpeech Alignments](https://github.com/CorentinJ/librispeech-alignments) should be placed in the root of repository.
+
 
 ## Performance
 
@@ -36,11 +49,7 @@ The performance on the LibriSpeech dev-clean set is summarized:
 
 During inference - voice conversion - an instance of `XNot` is trained (and returned) as an approximation of the best transport map between source and target audio features distribution.
 
-## Acknowledgements
-
-Parts of code for this project are adapted from the following repositories. Thank you to the authors of:
-
-- HiFiGAN: https://github.com/jik876/hifi-gan
-- WavLM: https://github.com/microsoft/unilm/tree/master/wavlm
-- kNN-VC: https://github.com/bshall/knn-vc
-- XNOT: https://github.com/milenagazdieva/ExtremalNeuralOptimalTransport
+## Credits
+- [X-vectors for speaker verification](https://huggingface.co/speechbrain/spkrec-xvect-voxceleb) developer tools for machine learning;
+- [kNN-VC](https://github.com/bshall/knn-vc) original paper;
+- [XNOT](https://github.com/milenagazdieva/ExtremalNeuralOptimalTransport) original paper.
