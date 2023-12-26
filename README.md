@@ -36,12 +36,14 @@ Additions to original repo:
 
 ## Performance
 
-The performance on the LibriSpeech dev-clean set is summarized:
+The performance on the LibriSpeech dev-clean set is summarized (all models use [prematched HiFiGAN](https://github.com/bshall/knn-vc/releases/download/v0.1/prematch_g_02500000.pt)):
 
-| model | WER (%) &darr; | CER (%) &darr; |  EER (%) &uarr;  |
-| ----- | :------------: | :------------: |:----------------:|
-| [kNN-VC with prematched HiFiGAN](https://github.com/bshall/knn-vc/releases/download/v0.1/prematch_g_02500000.pt)* | 6.29 | 2.34 |      35.73       | 
-| XNOT-VC with prematched HiFiGAN | ?? | ?? |        ??        | 
+| model          | WER (%) &darr; | CER (%) &darr; |  EER (%) &uarr;  |
+|----------------|:--------------:|:--------------:|:----------------:|
+| kNN-VC*        |      6.29      |      2.34      |      35.73       | 
+| XNOT-VC, `w=1` |       ??       |       ??       |        ??        | 
+| XNOT-VC, `w=2` |       ??       |       ??       |        ??        | 
+| XNOT-VC, `w=4` |       ??       |       ??       |        ??        | 
 
 *As reported by original authors
 
