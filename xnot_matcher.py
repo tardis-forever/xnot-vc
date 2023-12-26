@@ -137,7 +137,7 @@ class XNOTNeighborsVC(nn.Module):
             - `synth_set`: optional Tensor (N2, dim) corresponding to the matching set. We use the matching set to assign each query
                 vector to a vector in the matching set, and then use the corresponding vector from the synth set during HiFiGAN synthesis.
                 By default, and for best performance, this should be identical to the matching set. 
-            - `topk`: k in the kNN -- the number of nearest neighbors to average over.
+            - `topk`: k -- the number of nearest neighbors to average over.
             - `tgt_loudness_db`: float db used to normalize the output volume. Set to None to disable. 
             - `target_duration`: if set to a float, interpolate resulting waveform duration to be equal to this value in seconds.
             - `device`: if None, uses default device at initialization. Otherwise uses specified device

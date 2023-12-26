@@ -36,6 +36,8 @@ Additions to original repo:
 
 ## Performance
 
+All experiments were run on single V-100 GPU.
+
 The performance on the LibriSpeech dev-clean set is summarized (all models use [prematched HiFiGAN](https://github.com/bshall/knn-vc/releases/download/v0.1/prematch_g_02500000.pt)):
 
 | model          | WER (%) &darr; | CER (%) &darr; |  EER (%) &uarr;  |
