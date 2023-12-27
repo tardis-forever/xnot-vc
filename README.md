@@ -37,19 +37,24 @@ Additions to original repo:
 ## Experiments
 
 ### Basic setup
+Each chosen speaker utterance is converted to every other speaker. Corresponding models are referred to as `XNOT-VC`.
+
 ### Ablation setup
+For each source speaker a single pretrained XNOT is applied to different samples from the same speaker. Corresponding models are referred to as `XNOT-VC-rec`.
+
 ### V2 setup
+XNOT-VC is trained across all 5 audio samples. Corresponding models are referred to as `XNOT-VC-v2`.
+
 ### Cross-lingual translation
 
-During inference - voice conversion - an instance of `XNot` is trained (and returned) as an approximation of the best transport map between source and target audio features distribution.
- // todo
+RU TTS single-speaker audios are generated and tested as both sources and targets for cross-lingual translation. Corresponding models are referred to as `XNOT-VC-ru`.
 
 ## Performance
 
 All experiments were run on single V-100 GPU.
 
 For intelligibility metrics (`WER`, `CER`) average values over all generated samples are reported.
-The performance on the LibriSpeech dev-clean set is summarized (all models use [prematched HiFiGAN](https://github.com/bshall/knn-vc/releases/download/v0.1/prematch_g_02500000.pt)):
+The performance on the LibriSpeech `test-clean` set is summarized (all models use [prematched HiFiGAN](https://github.com/bshall/knn-vc/releases/download/v0.1/prematch_g_02500000.pt)):
 
 ### Basic setup
 
@@ -60,7 +65,7 @@ The performance on the LibriSpeech dev-clean set is summarized (all models use [
 | XNOT-VC     | 1 | 11.32          | 3.97           | **92.22**      |
 | XNOT-VC     | 2 | 11.32          | 3.97           | **92.67**      |
 | XNOT-VC     | 4 | 11.32          | 3.97           | 90.22          |
-|
+
 
 *As reported by original authors on `dev-clean` split in original `README.md`, `EER` was calculated in a different unspecified manner and reportedly capped at 0.5.  
 As in the 4.3. section of [original paper](https://arxiv.org/abs/2305.18975) authors mention `test-clean` split, we chose 
@@ -88,7 +93,6 @@ it as the evaluation set in our research.
 | model       | w | WER (%) &darr; | CER (%) &darr; | EER (%) &uarr; |
 | ----------- |:-:|:--------------:|:--------------:|:--------------:|
 | kNN-VC*     | - | **10.58**      | **3.53**       | 90.99          |
-| kNN-VC-v2   | - | **10.58**      | **3.53**       | 91.11          |
 | XNOT-VC*    | 1 | 11.32          | 3.97           | 92.22          |
 | XNOT-VC*    | 2 | 11.32          | 3.97           | 92.67          |
 | XNOT-VC*    | 4 | 11.32          | 3.97           | 90.22          |
@@ -110,17 +114,27 @@ it as the evaluation set in our research.
 
 ## Results
 
-// todo
+Successfully trained XNOT-based VC models could be comparable to or greater than backbone kNN-VC in speaker similarity and are slightly worse in intelligibility. 
+Increase in hyperparameter `w` for XNOT does not affect intelligibility, but decreases speaker identity preservation.
 
-### Basic setup
-### Ablation setup
+Our hypothesis that explains this result is that the mapped source embedding tended to map more ”closely” to the source rather than the intended target voice.
+
 ### V2 setup
+XNOT-based VC models could be used for new audio samples, although both intelligibility and speaker identity preservation slightly decrease. 
+
+### Ablation setup
+XNOT-based VC models could be used for new audio samples, but even with greater quality degradation, than in `V2` setup.
+
 ### Cross-lingual translation
+
+XNOT significantly improves speaker identity preservation compared to backbone kNN-VC.
 
 
 ## Generated audios
 
 All audios generated during experiments are available on [YandexDisk](https://disk.yandex.ru/d/-qarNdQQkdMKEw).
+Audio samples are categorized by experiment type. Each XNOT folder contains three subdirectories for different `w` parameters. 
+Additionally, source audios and ground truth transcripts from the `test-clean` split of LibriSpeech dataset are provided for in-depth evaluation
 
 ## Credits
 - [X-vectors for speaker verification](https://huggingface.co/speechbrain/spkrec-xvect-voxceleb) developer tools for machine learning;
