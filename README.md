@@ -40,12 +40,24 @@ All experiments were run on single V-100 GPU.
 
 The performance on the LibriSpeech dev-clean set is summarized (all models use [prematched HiFiGAN](https://github.com/bshall/knn-vc/releases/download/v0.1/prematch_g_02500000.pt)):
 
-| model          | WER (%) &darr; | CER (%) &darr; |  EER (%) &uarr;  |
-|----------------|:--------------:|:--------------:|:----------------:|
-| kNN-VC*        |      6.29      |      2.34      |      35.73       | 
-| XNOT-VC, `w=1` |       ??       |       ??       |        ??        | 
-| XNOT-VC, `w=2` |       ??       |       ??       |        ??        | 
-| XNOT-VC, `w=4` |       ??       |       ??       |        ??        | 
+| model       | w | WER (%) &darr; | CER (%) &darr; | EER (%) &uarr; |
+| ----------- |:-:|:--------------:|:--------------:|:--------------:|
+| kNN-VC*     | - | 6.29           | 2.34           | 35.73*         |
+| kNN-VC      | - | 10.58          | 3.53           | 90.99          |
+| kNN-VC-v2   | - | 10.58          | 3.53           | 91.11          |
+| kNN-VC-ru   | - | 7.95           | 15.37          | 92.67          |
+| XNOT-VC     | 1 | 11.32          | 3.97           | 92.22          |
+| XNOT-VC     | 2 | 11.32          | 3.97           | 92.67          |
+| XNOT-VC     | 4 | 11.32          | 3.97           | 90.22          |
+| XNOT-VC-v2  | 1 | 11.02          | 3.83           | 91.44          |
+| XNOT-VC-v2  | 2 | 11.02          | 3.83           | 91.11          |
+| XNOT-VC-v2  | 4 | 11.02          | 3.83           | 90.44          |
+| XNOT-VC-rec | 1 | 17.35          | 7.2            | 90.00          |
+| XNOT-VC-rec | 2 | 17.35          | 7.2            | 89.25          |
+| XNOT-VC-rec | 4 | 17.35          | 7.2            | 89.25          |
+| XNOT-VC-ru  | 1 | 15.84          | 8.38           | 94.67          |
+| XNOT-VC-ru  | 2 | 15.84          | 8.38           | 94.67          |
+| XNOT-VC-ru  | 4 | 15.84          | 8.38           | 94.00          |
 
 *As reported by original authors on `dev-clean` split in original `README.md`, `EER` was calculated in a different unspecified manner and reportedly capped at 0.5.  
 As in the 4.3. section of [original paper](https://arxiv.org/abs/2305.18975) authors mention `test-clean` split, we chose 
