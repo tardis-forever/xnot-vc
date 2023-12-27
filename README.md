@@ -47,7 +47,9 @@ The performance on the LibriSpeech dev-clean set is summarized (all models use [
 | XNOT-VC, `w=2` |       ??       |       ??       |        ??        | 
 | XNOT-VC, `w=4` |       ??       |       ??       |        ??        | 
 
-*As reported by original authors
+*As reported by original authors on `dev-clean` split in original `README.md`, `EER` was calculated in a different unspecified manner and reportedly capped at 0.5.  
+As in the 4.3. section of [original paper](https://arxiv.org/abs/2305.18975) authors mention `test-clean` split, we chose 
+it as the evaluation set in our research.
 
 ## Training
 
